@@ -1,0 +1,135 @@
+﻿<!-- The example of the using of the signotec WebSocket Pad Server -->
+<!--
+	Copyright 2000-2021, signotec GmbH, Ratingen, Germany, All Rights Reserved
+	signotec GmbH
+	Am Gierath 20b
+	40885 Ratingen
+	Tel: +49 (2102) 5 35 75-10
+	Fax: +49 (2102) 5 35 75-39
+	E-Mail: <info@signotec.de>
+
+	-----------------------------------------------------------------------------
+	Redistribution and use in source and binary forms, with or without modification,
+	are permitted provided that the following conditions are met:
+
+	*	Redistributions of source code must retain the above copyright notice,
+		this list of conditions and the following disclaimer.
+	*	Redistributions in binary form must reproduce the above copyright notice,
+		this list of conditions and the following disclaimer in the documentation
+		and/or other materials provided with the distribution.
+	*	Neither the name of the signotec GmbH nor the names of its contributors
+		may be used to endorse or promote products derived from this software
+		without specific prior written permission.
+
+	THIS SOFTWARE ONLY DEMONSTRATES HOW TO IMPLEMENT SIGNOTEC SOFTWARE COMPONENTS
+	AND IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY
+	EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+	WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+	IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+	INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+	BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+	DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+	LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+	OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE  OF THIS SOFTWARE, EVEN IF ADVISED
+	OF THE POSSIBILITY OF SUCH DAMAGE.
+	-----------------------------------------------------------------------------
+
+	Version: 3.2.2.0
+	Date:    2021-07-22
+-->
+
+<!DOCTYPE html>
+<html lang="en-US" charset="UTF-8">
+	<head>
+        <style type="text/css" media="all">
+        p  {
+            font-family: Tahoma; 
+            font-size: 13px;
+            margin: 0px;
+            padding: 0px;
+        }
+        
+        li  {
+        	font-family: Tahoma; 
+        	font-size: 13px ;
+        	font-weight: bold;
+        }
+        
+        table  {
+        	font-family: Tahoma; 
+        	font-size: 13px;
+        }
+        
+        pre  {
+        	font-family: Tahoma; 
+        	font-size: 13px;
+        }
+        
+        h1  {
+        	font-family: Tahoma; 
+        	font-size: 30px;
+        }
+		
+        select{
+            font-family: Tahoma; 
+            font-size: 13px;
+        }
+		
+        #log {
+            overflow: auto;
+            max-height: 300px;
+            list-style: none;
+            padding: 0;
+        }
+        #log li {
+            border-top: 1px solid #ccc;
+            margin: 0;
+            padding: 10px 0;
+        }
+        
+        #status {
+            padding: 5px;
+            color: #fff;
+            background: #ccc;
+        }
+
+        #status.fail {
+            background: #c00;
+        }
+
+        #status.success {
+            background: #0c0;
+        }
+
+        #status.offline {
+            background: #c00;
+        }
+
+        #status.online {
+            background: #0c0;
+        }
+		
+		#sigCanvas {
+			border:1px solid #000000;
+		}
+        </style>        
+
+	    <title>signotec WebSocket Pad Server</title>
+	</head>
+	<body>
+        <br/>
+		<img src="signotec.gif" alt="signotec GmbH" width="132" height="30"/>
+        <br/>
+        <br/>
+
+		<p>signotec GmbH<br/>
+		Am Gierath 20b<br/>
+		40885 Ratingen</p>
+
+		<p>Phone: +49 (2102) 5 35 75 - 10<br/>
+		Fax: +49 (2102) 5 35 75 - 39</p>
+
+		<p>E-Mail: <a href="mailto:info@signotec.de">info@signotec.de</a> <br/>
+		Web: <a href="http://www.signotec.com/" target="_blank">www.signotec.com</a></p>
+	</body>
+</html>
