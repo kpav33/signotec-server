@@ -2,10 +2,18 @@ const express = require("express");
 const path = require("path");
 const http = require("http");
 const WebSocket = require("ws");
+const cors = require("cors");
 
 const app = express();
 // Signotec server will run on this port
 const port = 3001;
+
+// Added after changed of api routes
+// Middleware to parse JSON bodies
+app.use(express.json());
+
+// Enable CORS for all routes
+app.use(cors());
 
 // Serve static files from the public directory
 app.use(express.static(path.join(__dirname, "public")));
@@ -18,6 +26,9 @@ app.use(express.static(path.join(__dirname, "public")));
 // After adding websocket
 const server = http.createServer(app);
 const wss = new WebSocket.Server({ server });
+
+// Added after changed of api routes
+let signatureDataStore = null;
 
 wss.on("connection", function connection(ws) {
   console.log("Client connected");
@@ -53,3 +64,31 @@ wss.on("connection", function connection(ws) {
 // server.listen(port, () => {
 //   console.log(`Signotec server running at http://localhost:${port}`);
 // });
+
+// Added after changed of api routes
+// Endpoint to handle POST request and store signature data
+app.post("/api/signature", (req, res) => {
+  signatureDataStore = req.body.data;
+
+  // Notify clients via WebSocket
+  wss.clients.forEach((client) => {
+    if (client.readyState === WebSocket.OPEN) {
+      client.send("newDataAvailable"); // Notify all connected clients
+    }
+  });
+
+  res.json({ message: "Signature data updated successfully" });
+});
+
+// Endpoint for Next.js app to fetch signature data
+app.get("/api/signature", (req, res) => {
+  if (signatureDataStore) {
+    res.json({ signatureData: signatureDataStore });
+  } else {
+    res.status(404).json({ message: "No signature data available" });
+  }
+});
+
+server.listen(port, () => {
+  console.log(`Signotec server running at http://localhost:${port}`);
+});

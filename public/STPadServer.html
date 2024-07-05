@@ -832,20 +832,42 @@
       // signature retry send end
 
       //   || Added backend call code
+      // async function sendDataToBackend(
+      //   signatureData,
+      //   signatureImage,
+      //   signatureCert
+      // ) {
+      //   // console.log("sendDataToBackend called with: ", signatureData);
+      //   let data = { ...signatureData, signatureImage, signatureCert };
+      //   try {
+      //     const response = await fetch("http://localhost:3000/api/signature", {
+      //       method: "POST",
+      //       headers: {
+      //         "Content-Type": "application/json",
+      //       },
+      //       // body: JSON.stringify({ signatureData }),
+      //       body: JSON.stringify({ data }),
+      //     });
+      //     const result = await response.json();
+      //     console.log("Data sent successfully:", result);
+      //   } catch (error) {
+      //     console.error("Error sending data to backend:", error);
+      //   }
+      // }
+
+      // After changes to api routes
       async function sendDataToBackend(
         signatureData,
         signatureImage,
         signatureCert
       ) {
-        // console.log("sendDataToBackend called with: ", signatureData);
         let data = { ...signatureData, signatureImage, signatureCert };
         try {
-          const response = await fetch("http://localhost:3000/api/signature", {
+          const response = await fetch("http://localhost:3001/api/signature", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
             },
-            // body: JSON.stringify({ signatureData }),
             body: JSON.stringify({ data }),
           });
           const result = await response.json();
